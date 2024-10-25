@@ -9,7 +9,7 @@ int main()
     int repeat = 0;
 
     while(cin >> current && current != "q") {
-        word_number++;
+        ++word_number;
         if (current == previous) {
             cout << "Word number " << word_number << " repeat: " << current << "\n";
             repeat++;
