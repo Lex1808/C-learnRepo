@@ -11,19 +11,58 @@ double read_number() {
     return num;
 }
 
+std::string read_units() {
+    std::string u;
+
+    std::cin >> u;
+    while (u != "cm" && u != "m" && u != "in" && u != "ft") { 
+        std::cout << "You can use only 'cm', 'm', 'in', 'ft': ";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cin >> u;
+    }
+
+    return u;
+}
+
+double units_convert(double num, std::string& u) {
+   constexpr double cm = 1;
+   constexpr double m_to_cm = 100;
+   constexpr double in_to_cm = 2.54;
+   constexpr double ft_to_in = 12;
+
+   if(u == "cm") {
+        num *= cm;    
+   } else if(u == "m") {
+        num *= m_to_cm;
+   } else if(u == "in") {
+        num *= in_to_cm;
+   } else if(u == "ft") {
+        num *= ft_to_in * in_to_cm;
+   }
+
+   return num;
+}
+
+
 int main()
 {
     double number;
+    std::string units;
+    std::string unit_total = "cm";
     char terminator;
     double small_num;
     double large_num;
 
     std::cout << "Enter number: ";
     number = read_number();
+    units = read_units();
+    number = units_convert(number, units);
     small_num = large_num = number;
+
     do
     {
-        std::cout << "Enter two integers: ";
+        std::cout << "Enter number: ";
         std::cin >> terminator;
         if (terminator == '|') {
             break;
@@ -31,26 +70,28 @@ int main()
         std::cin.putback(terminator);
 
         number = read_number();
+        units = read_units();
+        number = units_convert(number, units);
 
         if(number < small_num) {
             small_num = number;
-            std::cout << small_num << " the smallest so far" << std::endl;
+            std::cout << small_num << unit_total << " the smallest so far" << std::endl;
         } else if(number > large_num) {
             large_num = number;
-            std::cout << large_num << " the largest so far" << std::endl;
+            std::cout << large_num << unit_total << " the largest so far" << std::endl;
         } else {
-            std::cout << number << std::endl;
+            std::cout << number << unit_total << std::endl;
         }
 
     } while (true);
-
+        
     if (small_num == large_num) {
-        std::cout << "The numbers: " << small_num << " and " << large_num << " are equel" << std::endl;
+        std::cout << "The numbers: " << small_num << unit_total << " and " << large_num << unit_total << " are equel" << std::endl;
     } else {
-        std::cout << "The larger value is: " << large_num << std::endl;
-        std::cout << "The smaller value is: " << small_num << std::endl;
+        std::cout << "The larger value is: " << large_num << unit_total << std::endl;
+        std::cout << "The smaller value is: " << small_num << unit_total << std::endl;
         if ((large_num - small_num) <= (1.0/100)) {
-            std::cout << "The numbers: " << large_num << " and " << small_num << " are almost equal" << std::endl;
+            std::cout << "The numbers: " << large_num << unit_total << " and " << small_num << unit_total << " are almost equal" << std::endl;
         } 
     }
 
