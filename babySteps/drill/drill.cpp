@@ -1,5 +1,6 @@
 #include <iostream>
 #include <limits>
+#include <iomanip>
 
 double read_number() {
     double num;
@@ -44,6 +45,10 @@ double units_convert(double num, std::string& u) {
    return num;
 }
 
+double cm_convert(double sum) {
+    constexpr double cm_to_meters = 0.01;
+    return sum * cm_to_meters;
+}
 
 int main()
 {
@@ -53,13 +58,17 @@ int main()
     char terminator;
     double small_num;
     double large_num;
-
+    int sum_count = 0;
+    double total_sum = 0;
+    
     std::cout << "Enter number: ";
     number = read_number();
     units = read_units();
     number = units_convert(number, units);
     small_num = large_num = number;
-
+    total_sum += number;
+    sum_count++;
+    
     do
     {
         std::cout << "Enter number: ";
@@ -72,7 +81,8 @@ int main()
         number = read_number();
         units = read_units();
         number = units_convert(number, units);
-
+        total_sum += number;
+        
         if(number < small_num) {
             small_num = number;
             std::cout << small_num << unit_total << " the smallest so far" << std::endl;
@@ -82,6 +92,8 @@ int main()
         } else {
             std::cout << number << unit_total << std::endl;
         }
+
+        sum_count++;
 
     } while (true);
         
@@ -94,6 +106,8 @@ int main()
             std::cout << "The numbers: " << large_num << unit_total << " and " << small_num << unit_total << " are almost equal" << std::endl;
         } 
     }
+    std::cout << "The number of values entered is: " << sum_count << std::endl;
+    std::cout << "The sum of values is: " << std::fixed << std::setprecision(2) << cm_convert(total_sum) << "m" << std::endl;
 
     return 0;
 }
