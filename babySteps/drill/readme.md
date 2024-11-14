@@ -7,5 +7,5 @@
 [7]Add a unit to each double entered; that is, enter values such as 10cm, 2.5in, 5ft, or 3.33m. Accept the four units: cm, m, in, ft. Assume conversion factors 1m==100cm, 1in==2.54cm, 1ft==12in. Read the unit <br> indicator into a string. You may consider 12 m (with a space between the number and the unit) equivalent to 12m (without a space). <br>
 [8] Keep track of the sum of values entered (as well as the smallest and the largest) and the number of values entered. When the loop ends, print the smallest, the largest, the number of values, and the <br>
 sum of values. Note that to keep the sum, you have to decide on a unit to use for that sum; use meters. <br>
-[10] Keep all the values entered (converted into meters) in a vector. At the end, write out those values. <br>
-[11] Before writing out the values from the vector, sort them (that’ll make them come out in increasing order)
+[9] Keep all the values entered (converted into meters) in a vector. At the end, write out those values. <br>
+[10] Before writing out the values from the vector, sort them (that’ll make them come out in increasing order)
