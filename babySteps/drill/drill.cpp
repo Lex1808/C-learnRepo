@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 #include <limits>
 #include <iomanip>
@@ -50,6 +51,14 @@ double cm_convert(double sum) {
     return sum * cm_to_meters;
 }
 
+void push_in_vector(std::vector<double> &v, double num, std::string u) {
+    if(u != "cm") {
+        num = units_convert(num, u);
+    }
+    num = cm_convert(num);
+    v.push_back(num);
+}
+
 int main()
 {
     double number;
@@ -60,10 +69,12 @@ int main()
     double large_num;
     int sum_count = 0;
     double total_sum = 0;
+    std::vector<double> total_meters;
     
     std::cout << "Enter number: ";
     number = read_number();
     units = read_units();
+    push_in_vector(total_meters, number, units);
     number = units_convert(number, units);
     small_num = large_num = number;
     total_sum += number;
@@ -80,6 +91,7 @@ int main()
 
         number = read_number();
         units = read_units();
+        push_in_vector(total_meters, number, units);
         number = units_convert(number, units);
         total_sum += number;
         
@@ -109,5 +121,11 @@ int main()
     std::cout << "The number of values entered is: " << sum_count << std::endl;
     std::cout << "The sum of values is: " << std::fixed << std::setprecision(2) << cm_convert(total_sum) << "m" << std::endl;
 
+    std::ranges::sort(total_meters);
+    std::cout << "All values converted into meters: ";
+    for (size_t i = 0; i < total_meters.size(); ++i) {
+        std::cout << total_meters[i] << "m" << " ";
+    }
+    
     return 0;
 }
