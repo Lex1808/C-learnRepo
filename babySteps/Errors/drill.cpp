@@ -31,26 +31,31 @@
 
 int main()
 {
+      std::vector<char> v(5);
     try {
         
-      std::string s = "ape"; // [10] string s = "ape"; if (s=="fool") cout << "Success!\n";
-      if (s != "fool") {
-          std::cout << "Success!\n";
-      } else {
-          throw std::runtime_error ("Fail");
-      }        
-      return 0;
+        for (size_t i = 0; i < v.size(); ++i) { //[14] vector<char> v(5); for (int i = 0; i<=v.size(); ++i) ; cout << "Success!\n";
+            // other code ...
+        }
+        std::cout << "Success!\n";
+
+        return 0;
+    }
+    catch (std::out_of_range& vectorErr) {
+        std::cerr << "ERROR: " << vectorErr.what() << std::endl;
     }
 
     catch (const std::runtime_error& err) {
 
         std::cerr << "ERROR: " << err.what() << std::endl;
     }
+        
     catch (const std::exception& e) {
 
         std::cerr << e.what() << std::endl;
         return 1;
     }
+        
     catch (...) {
 
         std::cerr << "Oops: unknown exception!" << std::endl;
