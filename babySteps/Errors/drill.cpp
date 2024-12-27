@@ -32,17 +32,11 @@
 
 int main()
 {
-    int x = 3; // [21] int x = 2; double d = 5/(x−2); if (d==2*x+0.5) cout << "Success!\n";
-    double d = 0;
-    if (x - 2 != 0) {
-        d = 5 / (x - 2);
-    } else {
-        throw std::runtime_error("Division zero");
-    }
-  
+    std::string s = "Success!\n"; // [22] string<char> s = "Success!\n"; for (int i = 0; i<=10; ++i) cout << s[i];
+    size_t len = s.length();
     try {
-        if (d == 2 * x + 0.5) {
-            // other code
+        for (size_t i = 0; i < len; ++i) {
+            std::cout << s[i];
         }
 
         std::cout << "Success!\n";
