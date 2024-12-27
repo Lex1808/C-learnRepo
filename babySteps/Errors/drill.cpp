@@ -32,17 +32,14 @@
 
 int main()
 {
-    int x = 2000; // [17] int x = 2000; char c = x; if (c==2000) cout << "Success!\n";
-    int c = x;
-    std::cout << c << '\n';
+    std::string s = "Success!\n"; // [18] string s = "Success!\n"; for (int i = 0; i<10; ++i) cout << s[i];
     try {
-        if (c == 2000) { 
-            std::cout << "Success!\n";
+        for (size_t i = 0; i < s.length(); ++i) {
+            std::cout << s[i];
         }
 
         return 0;
     }
-
           
     catch (std::out_of_range& vectorErr) {
         std::cerr << "ERROR: " << vectorErr.what() << std::endl;
