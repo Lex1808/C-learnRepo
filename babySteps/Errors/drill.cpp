@@ -32,15 +32,17 @@
 
 int main()
 {
-      std::string s = "Success!\n";
+    bool statement = true;
     try {
-        
-        for (size_t i = 0; i < s.length(); ++i) { // [15] string s = "Success!\n"; for (int i = 0; i<6; ++i) cout << s[i];
-            std::cout << s[i];
+        if (statement == true) { // [16] if (true) then cout << "Success!\n"; else cout << "Fail!\n";
+            std::cout << "Success!\n";
+        } else {
+            throw std::runtime_error("Fail statement!");
         }
 
         return 0;
     }
+          
     catch (std::out_of_range& vectorErr) {
         std::cerr << "ERROR: " << vectorErr.what() << std::endl;
     }
