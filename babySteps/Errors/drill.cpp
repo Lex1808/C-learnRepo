@@ -29,13 +29,17 @@
 #include <stdexcept>
 #include <vector>
 #include <string>
+#include <cmath>
 
 int main()
 {
-    int i = 0; // [23] int i = 0; while (i<10) ++j; if (j<i) cout << "Success!\n";
+   int x = 4; // [24] int x = 4; double d = 5/(x−2); if (d=2*x+0.5) cout << "Success!\n";
+   double d = 5 / (x - 2);
+   constexpr double epsilon = 1e-9; 
     try {
-        while (i < 10) {
-            i++;
+        if (std::abs(d - (2 * x + 0.5)) < epsilon) {
+            // if equel 
+            std::cout << "..\n";
         }
 
         std::cout << "Success!\n";
