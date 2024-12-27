@@ -32,31 +32,23 @@
 
 int main()
 {
-    int i = 0; // [20] int i = 0; int j = 9; while (i<10) ++j; if (j<i) cout << "Success!\n";
-    int j = 9;
+    int x = 3; // [21] int x = 2; double d = 5/(x−2); if (d==2*x+0.5) cout << "Success!\n";
+    double d = 0;
+    if (x - 2 != 0) {
+        d = 5 / (x - 2);
+    } else {
+        throw std::runtime_error("Division zero");
+    }
+  
     try {
-        while (i < j) {
-            j--;
-            i++;
-            if (j < i) {
-                std::cout << "Success!\n";
-            }
+        if (d == 2 * x + 0.5) {
+            // other code
         }
-        
+
+        std::cout << "Success!\n";
+
         return 0;
     }
-    /*
-    OR
-    while (i < j) {
-        j--;
-        i++;
-    }
-    if (j < i) {
-        std::cout << "Success!\n";
-    } else {
-        throw std::runtime_error("Condition not met");
-    }
-    */
           
     catch (std::out_of_range& vectorErr) {
         std::cerr << "ERROR: " << vectorErr.what() << std::endl;
