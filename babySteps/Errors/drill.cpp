@@ -32,15 +32,31 @@
 
 int main()
 {
-    std::vector<int> v(5); // [19] vector v(5); for (int i = 0; i<=v.size(); ++i) ; cout << "Success!\n";
+    int i = 0; // [20] int i = 0; int j = 9; while (i<10) ++j; if (j<i) cout << "Success!\n";
+    int j = 9;
     try {
-        for (size_t i = 0; i < v.size(); ++i) {
-            // other code ...
+        while (i < j) {
+            j--;
+            i++;
+            if (j < i) {
+                std::cout << "Success!\n";
+            }
         }
-        std::cout << "Success!\n";
-
+        
         return 0;
     }
+    /*
+    OR
+    while (i < j) {
+        j--;
+        i++;
+    }
+    if (j < i) {
+        std::cout << "Success!\n";
+    } else {
+        throw std::runtime_error("Condition not met");
+    }
+    */
           
     catch (std::out_of_range& vectorErr) {
         std::cerr << "ERROR: " << vectorErr.what() << std::endl;
