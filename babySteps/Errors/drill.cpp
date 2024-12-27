@@ -32,11 +32,12 @@
 
 int main()
 {
-    std::string s = "Success!\n"; // [18] string s = "Success!\n"; for (int i = 0; i<10; ++i) cout << s[i];
+    std::vector<int> v(5); // [19] vector v(5); for (int i = 0; i<=v.size(); ++i) ; cout << "Success!\n";
     try {
-        for (size_t i = 0; i < s.length(); ++i) {
-            std::cout << s[i];
+        for (size_t i = 0; i < v.size(); ++i) {
+            // other code ...
         }
+        std::cout << "Success!\n";
 
         return 0;
     }
