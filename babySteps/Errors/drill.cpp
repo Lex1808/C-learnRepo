@@ -28,16 +28,16 @@
 #include <iostream>
 #include <stdexcept>
 #include <vector>
+#include <string>
 
 int main()
 {
-      std::vector<char> v(5);
+      std::string s = "Success!\n";
     try {
         
-        for (size_t i = 0; i < v.size(); ++i) { //[14] vector<char> v(5); for (int i = 0; i<=v.size(); ++i) ; cout << "Success!\n";
-            // other code ...
+        for (size_t i = 0; i < s.length(); ++i) { // [15] string s = "Success!\n"; for (int i = 0; i<6; ++i) cout << s[i];
+            std::cout << s[i];
         }
-        std::cout << "Success!\n";
 
         return 0;
     }
