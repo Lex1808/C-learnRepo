@@ -32,15 +32,14 @@
 
 int main()
 {
-    std::string s = "Success!\n"; // [22] string<char> s = "Success!\n"; for (int i = 0; i<=10; ++i) cout << s[i];
-    size_t len = s.length();
+    int i = 0; // [23] int i = 0; while (i<10) ++j; if (j<i) cout << "Success!\n";
     try {
-        for (size_t i = 0; i < len; ++i) {
-            std::cout << s[i];
+        while (i < 10) {
+            i++;
         }
 
         std::cout << "Success!\n";
-
+      
         return 0;
     }
           
