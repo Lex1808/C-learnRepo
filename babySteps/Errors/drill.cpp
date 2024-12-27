@@ -32,16 +32,17 @@
 
 int main()
 {
-    bool statement = true;
+    int x = 2000; // [17] int x = 2000; char c = x; if (c==2000) cout << "Success!\n";
+    int c = x;
+    std::cout << c << '\n';
     try {
-        if (statement == true) { // [16] if (true) then cout << "Success!\n"; else cout << "Fail!\n";
+        if (c == 2000) { 
             std::cout << "Success!\n";
-        } else {
-            throw std::runtime_error("Fail statement!");
         }
 
         return 0;
     }
+
           
     catch (std::out_of_range& vectorErr) {
         std::cerr << "ERROR: " << vectorErr.what() << std::endl;
